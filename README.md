@@ -1,5 +1,5 @@
 # IOS-APP-DEV_learning
-Hello Developers!!
+Hello DEVELOPER COMMUNITY!!
 
 In the coming days I am exploring IOS APP DEVELOPMENT through Angela YU course.
 
