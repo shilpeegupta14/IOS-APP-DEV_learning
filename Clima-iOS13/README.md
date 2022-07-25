@@ -1,4 +1,4 @@
-##Clima App
+# Clima App
 
 It is an iOS app that shows the live weather data for any location using iphone’s GPS data with help of CoreLocation Framework. 
 The app supports light and dark theme. 
