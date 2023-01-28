@@ -22,14 +22,12 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        locationManager.delegate=self
-        
-        weatherManager.delegate=self
-        // Do any additional setup after loading the view.
-        searchTextField.delegate=self
+        weatherManager.delegate = self
+        searchTextField.delegate = self
     }
     
     
@@ -43,7 +41,7 @@ extension WeatherViewController: UITextFieldDelegate{
         searchTextField.endEditing(true)
     }
     //user pressed on return/go button from keyboard
-    func textFieldShouldReturn(_textfield:UITextField)->Bool{
+    func textFieldShouldReturn(_ textfield:UITextField)->Bool{
         searchTextField.endEditing(true)
         return true
     }
@@ -65,7 +63,7 @@ extension WeatherViewController: UITextFieldDelegate{
 //MARK: - WeatherManagerDelegate
 
 extension WeatherViewController: WeatherManagerDelegate{
-    func didUpdateWeather(_weatherManager:WeatherManager, weather: WeatherModel){
+    func didUpdateWeather(_ weatherManager:WeatherManager, weather: WeatherModel){
         DispatchQueue.main.async{
             //update ui
             self.temperatureLabel.text=weather.temperatureString
