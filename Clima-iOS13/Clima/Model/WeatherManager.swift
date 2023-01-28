@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 protocol WeatherManagerDelegate{
-    func didUpdateWeather(_weatherManager:WeatherManager, weather: WeatherModel)
+    func didUpdateWeather(_ weatherManager:WeatherManager, weather: WeatherModel)
     func didFailWithError(error: Error)
 }
 
@@ -40,8 +40,8 @@ struct WeatherManager{
                     return
                 }
                 if let safeData = data{
-                    if let weather=self.parseJSON(_weatherData: safeData){
-                        self.delegate?.didUpdateWeather(_weatherManager: self, weather: weather)
+                    if let weather=self.parseJSON(safeData){
+                        self.delegate?.didUpdateWeather(self, weather: weather)
                     }
                 }
                 //4) start task
@@ -50,7 +50,7 @@ struct WeatherManager{
         }
     }
     
-    func parseJSON(_weatherData: Data)->WeatherModel?{
+    func parseJSON(_ weatherData: Data)->WeatherModel?{
         let decoder=JSONDecoder()
         do{
             let decodedData=try decoder.decode(WeatherData.self, from: weatherData)
